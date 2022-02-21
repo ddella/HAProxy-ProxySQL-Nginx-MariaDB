@@ -6,7 +6,7 @@ In this section, we'll start web servers from a Docker container. We'll use a co
 
 The web servers runs on Alpine Linux mini root-fs, with Nginx and PHP8.
 
-![Architecture](images/architecture.png)
+![Architecture](../images/architecture.png)
 
 ## Requirements:
 
@@ -96,7 +96,7 @@ docker rm -f $(docker container ls -q -f "name=web[1-3]")
 
 Open your prefered web browser and type the url `http://localhost:8080`. The page should look like this. Hit reload and check the field `Container IP address`. This is the IP address of the web server that serviced the request.
 
-![web_servers](images/web-servers.jpg)
+![web_servers](../images/web-servers.jpg)
 
 ### Clean the log file
 
