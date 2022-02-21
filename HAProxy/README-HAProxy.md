@@ -6,7 +6,7 @@ In this section, I'll demonstrate how to configure a HAProxy server that fronts 
 
 To test the load balancing capability of HAProxy, I've built a Docker container with Nginx and PHP8. The default web page
 
-![Architecture](images/architecture.png)  
+![Architecture](../images/architecture.png)  
 
 ## Requirements:
 
