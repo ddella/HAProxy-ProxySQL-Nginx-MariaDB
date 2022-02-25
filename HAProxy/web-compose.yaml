@@ -1,0 +1,66 @@
+# version: '3'
+# https://github.com/compose-spec/compose-spec/blob/master/spec.md
+
+# Starts 3 web servers on Nginx with PHP8. The default web page will give
+# TCP/IP information, like:
+#     - Container IP address
+#     - Container destination TCP port
+#     - Load Balancer IP address
+#     - Load Balancer source TCP port
+#
+# start the containers
+#     docker-compose -f web-compose.yaml up -d
+# start one container
+#     docker run --rm -d \
+#     --name web4 \
+#     --hostname web4 \
+#     --network frontend \
+#     --ip 172.31.10.14 \
+#     --env TZ='EAST+5EDT,M3.2.0/2,M11.1.0/2' \
+#     --env TIMEZONE='America/New_York' \
+#     php8_nginx
+#
+# stop and terminate all the containers:
+#     docker rm -f $(docker container ls -q -f "name=web[1-3]")
+#
+
+networks:
+   frontend:
+      name: frontend
+
+services:
+  web1:
+    image: php8_nginx
+    restart: unless-stopped
+    environment:
+      - TZ=EAST+5EDT,M3.2.0/2,M11.1.0/2
+      - TIMEZONE=America/New_York
+    hostname: web1
+    container_name: web1
+    networks:
+      frontend:
+        ipv4_address: 172.31.10.11
+
+  web2:
+    image: php8_nginx
+    restart: unless-stopped
+    environment:
+      - TZ=EAST+5EDT,M3.2.0/2,M11.1.0/2
+      - TIMEZONE=America/New_York
+    hostname: web2
+    container_name: web2
+    networks:
+      frontend:
+        ipv4_address: 172.31.10.12
+
+  web3:
+    image: php8_nginx
+    restart: unless-stopped
+    environment:
+      - TZ=EAST+5EDT,M3.2.0/2,M11.1.0/2
+      - TIMEZONE=America/New_York
+    hostname: web3
+    container_name: web3
+    networks:
+      frontend:
+        ipv4_address: 172.31.10.13
